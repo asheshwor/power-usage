@@ -12,6 +12,9 @@ Daily readings from power meter was entered into a Google docs spreadsheet (Goog
 
 ## Screenshots
 
+![app screenshot 1](img/plot100.png)
+<small>Usage graph</small>
+
 ## License:
 
 Code distributed under the terms of the [MIT license](https://github.com/asheshwor/power-usage/blob/master/LICENSE).
