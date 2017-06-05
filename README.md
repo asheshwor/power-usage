@@ -12,7 +12,7 @@ Daily readings from power meter was entered into a Google docs spreadsheet (Goog
 
 ## Screenshots
 
-![app screenshot 1](img/plot100.png)
+![app screenshot 1](image/plot100.png)
 <small>Usage graph</small>
 
 ## License:
