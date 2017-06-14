@@ -12,7 +12,7 @@ Daily readings from power meter was entered into a Google docs spreadsheet (Goog
 
 ## Screenshots
 
-![Graph of daily/weekly usage and daily temperature extremes 1](image/plot101.png)
+![Graph of daily/weekly usage and daily temperature extremes 1](image/plot102.png)
 <small>Usage graph</small>
 
 ## Code
