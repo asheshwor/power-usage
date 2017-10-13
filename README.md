@@ -8,7 +8,8 @@ Daily readings from power meter was entered into a Google docs spreadsheet (Goog
 ## R packages used
 * tidyverse
 * googlesheets
-* weatherData
+* ~~weatherData~~ see note in code
+* rwunderground
 
 ## Screenshots
 
