@@ -12,7 +12,7 @@ Daily readings from power meter was entered into a Google docs spreadsheet (Goog
 
 ## Screenshots
 
-![Graph of daily/weekly usage and daily temperature extremes 1](image/plot105.png)
+![Graph of daily/weekly usage and daily temperature extremes 1](image/plot107.png)
 <small>Usage graph</small>
 
 ## Code
@@ -29,10 +29,21 @@ reading <- mdata %>%
   gs_read(ws = 1)
 reading$Date2 <- as.Date(reading$Date, "%d %B %Y")
 reading <- reading[complete.cases(reading), ]
-#get weather data
+#get weather data using weatherData package. Unfortunately, this stopped working since October 2017, check the workaround code using rwunderground package below
 wdata <- getWeatherForDate("ADL", reading$Date2[1], end_date=reading$Date2[nrow(reading)])
 reading$max <- wdata[, 2]
 reading$min <- wdata[, 4]
+#workaround using rwunderground package
+library(rwunderground)
+rwunderground::set_api_key("###API KEY###") #this requires an API key, free tier should be enough for this purpose
+weather.hourly <- history_range(set_location(city="Adelaide"), date_start = reading$Date2[1], date_end = reading$Date2[nrow(reading)], use_metric = TRUE)
+weather.hourly$day <- as.character(strptime(weather.hourly$date, "%Y-%m-%d"))
+weather.daily <- weather.hourly %>%
+  group_by(day) %>%
+  summarise(daymax=max(temp, na.rm=TRUE),
+            daymin = min(temp, na.rm = TRUE))
+reading$max <- weather.daily$daymax
+reading$min <- weather.daily$daymin
 #get running mean
 reading$rmean <- rollmean(reading$Consumed, 7, fill=NA)
 reading$Week <- format(reading$Date2, "%U")
