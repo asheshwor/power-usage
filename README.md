@@ -13,7 +13,7 @@ Daily readings from power meter was entered into a Google docs spreadsheet (Goog
 
 ## Screenshots
 
-![Graph of daily/weekly usage and daily temperature extremes 1](image/plot107.png)
+![Graph of daily/weekly usage and daily temperature extremes 1](image/plot108.png)
 <small>Usage graph</small>
 
 ## Code
@@ -33,7 +33,8 @@ reading <- reading[complete.cases(reading), ]
 #get weather data using weatherData package.
 # Unfortunately, this stopped working since October 2017, check the workaround
 # code using rwunderground package below
-wdata <- getWeatherForDate("ADL", reading$Date2[1], end_date=reading$Date2[nrow(reading)])
+wdata <- getWeatherForDate("ADL", reading$Date2[1],
+  end_date=reading$Date2[nrow(reading)])
 reading$max <- wdata[, 2]
 reading$min <- wdata[, 4]
 #workaround using rwunderground package
